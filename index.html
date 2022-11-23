@@ -41,7 +41,7 @@
       <div>
         <label>what type is your product :</label>
         <select id="type">
-          <option disabled selected value>-- select an option --</option>
+          <!-- <option disabled selected value>-- select an option --</option> -->
           <option value="1">hygiène et toilette</option>
           <option value="2">soins esthétiques</option>
           <option value="3">produits solaires</option>
@@ -56,19 +56,42 @@
       <div>
         <label> On discount : </label>
         <div id="lastdiv">
-          <label>yes</label><input type="radio" name="discount"/><label
+          <label>yes</label><input type="radio" name="discount" value="yes"/><label
             >No</label
-          ><input type="radio" name="discount" />
+          ><input type="radio" name="discount" value="no"/>
         </div>
         <div class="error"></div>
       </div>
       <!-- ================= submit button ================== -->
+          <p> Select one from the given options:
+        <select id="select1">
+            <option value="free">Free</option>
+            <option value="basic">Basic</option>
+            <option value="premium">Premium</option>
+        </select>
+    </p>
+  
+  
+    <p> The value of the option selected is: 
+        <span class="output"></span>
+    </p>
+  
+  
+    <button onclick="getOption()"> Check option </button>
+      
+    <script type="text/javascript">
+    function getOption() {
+        selectElement = document.querySelector('#select1');
+        output = selectElement.value;
+        document.querySelector('.output').textContent = output;
+    }
+    </script>
 
-      <button name="add">Add</button>
+      <input type="button" name="button" id="btn" value="Add" onclick="AddRow()">
     </form>
 
     <section>
-      <table>
+      <table id="table">
         <tr>
           <th>name</th>
           <th>brand</th>
@@ -78,7 +101,7 @@
           <th>on discount</th>
           <th>actions</th>
         </tr>
-        <tr>
+        <!-- <tr>
           <td>name</td>
           <td>brand</td>
           <td>production date</td>
@@ -95,9 +118,10 @@
           <td>type</td>
           <td>on discount</td>
           <td><i class="fas fa-edit"></i> <i class="fa-solid fa-trash"></i></td>
-        </tr>
+        </tr> -->
       </table>
     </section>
+
     <script src="/script.js"></script>
   </body>
 </html>

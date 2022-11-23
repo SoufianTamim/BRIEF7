@@ -93,7 +93,8 @@ select, option{
 label{
   font-size: 1rem;
 }
-button[name="add"] {
+
+input[type=button] {
   padding: 10px;
   margin-top: 10px;
   width: 97%;
@@ -104,10 +105,10 @@ button[name="add"] {
   font-size: 1rem;
   box-shadow: 0 5px #6c5b7b;
 }
-button[name="add"]:hover {
+input[type=button]:hover {
   background-color: #c06c84;
 }
-button[name="add"]:active {
+input[type=button]:active {
   background-color: #355c7d;
   transform: translateY(4px);
 }
