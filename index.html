@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>products form</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="https://kit.fontawesome.com/c7a60e43cd.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+    <form>
+      <h1>Enter product infos</h1>
+      <!-- =================  ================== -->
+      <div>
+        <label> Name :</label><input type="text" id="name" />
+        <div class="error"></div>
+      </div>
+      <!-- ================= brand ================== -->
+      <div>
+        <label>brand : </label>
+        <input type="text" id="brand" />
+
+        <div class="error"></div>
+      </div>
+
+      <!-- =================  ================== -->
+      <div>
+        <label>price : </label><input type="text" id="price" />
+        <div class="error"></div>
+      </div>
+      <!-- ================== date ================= -->
+      <div>
+        <label>production date: </label>
+        <div>
+          <input type="date" id="date" />
+        </div>
+        <div class="error"></div>
+      </div>
+      <!-- ================= Clubs input ================== -->
+      <div>
+        <label>what type is your product :</label>
+        <select id="type">
+          <option disabled selected value>-- select an option --</option>
+          <option value="1">hygiène et toilette</option>
+          <option value="2">soins esthétiques</option>
+          <option value="3">produits solaires</option>
+          <option value="4">beauté des mains et de pieds</option>
+          <option value="5">produits de maquillage</option>
+          <option value="6">entretien capillaires</option>
+          <option value="7">parfums</option>
+        </select>
+        <div class="error"></div>
+      </div>
+      <!-- ================= group input ================== -->
+      <div>
+        <label> On discount : </label>
+        <div id="lastdiv">
+          <label>yes</label><input type="radio" name="discount"/><label
+            >No</label
+          ><input type="radio" name="discount" />
+        </div>
+        <div class="error"></div>
+      </div>
+      <!-- ================= submit button ================== -->
+
+      <button name="add">Add</button>
+    </form>
+
+    <section>
+      <table>
+        <tr>
+          <th>name</th>
+          <th>brand</th>
+          <th>production date</th>
+          <th>price</th>
+          <th>type</th>
+          <th>on discount</th>
+          <th>actions</th>
+        </tr>
+        <tr>
+          <td>name</td>
+          <td>brand</td>
+          <td>production date</td>
+          <td>price</td>
+          <td>type</td>
+          <td>on discount</td>
+          <td><i class="fas fa-edit"></i><i class="fa-solid fa-trash"></i></td>
+        </tr>
+        <tr>
+          <td>name</td>
+          <td>brand</td>
+          <td>production date</td>
+          <td>price</td>
+          <td>type</td>
+          <td>on discount</td>
+          <td><i class="fas fa-edit"></i> <i class="fa-solid fa-trash"></i></td>
+        </tr>
+      </table>
+    </section>
+    <script src="/script.js"></script>
+  </body>
+</html>
