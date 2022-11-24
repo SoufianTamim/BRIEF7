@@ -1,13 +1,14 @@
-let namee = document.getElementById("name").value;
-let brand = document.getElementById("brand").value;
-let price = document.getElementById("price").value;
-let date = document.getElementById("date").value;
-let type = document.getElementById("type").value;
+// let namee = document.getElementById("name").value;
+// let brand = document.getElementById("brand").value;
+// let price = document.getElementById("price").value;
+// let date = document.getElementById("date").value;
+// let type = document.getElementById("type").value;
 let discount = document.getElementsByName('discount');
 
 
 function deleteData(array, i) {
-  array.splice(i, 1);
+  // array.splice(i, 1);
+  document.getElementById("table").deleteRow(1);
 
 }
 
@@ -20,21 +21,17 @@ let dates = [];
 let types = [];
 let discounts = [];
 
-let n = 1;
-let x = 0;
 
 
 
 function xd() {
 
 
-  document.querySelector("thead").innerHTML = "";
+  document.querySelector("tbody").innerHTML = "";
 
   for (i = 0; i < names.length; i++) {
 
-    document.querySelector("thead").innerHTML += `
-
-
+    document.querySelector("tbody").innerHTML += `
 <tr>
   <td>${names[i]}</td>
   <td>${brands[i]}</td>
@@ -42,27 +39,20 @@ function xd() {
   <td>${dates[i]}</td>
   <td>${types[i]}</td>
   <td>${discounts[i]}</td>
-  <td>  <i id='${i}' class="fas fa-edit" onClick="onEdit(this)" ></i><i onclick="mydelete(this)" id='${i}' class="fa-solid fa-trash" name="hh" ></i>  </td>
+  <td>  <i id='${i}' class="fas fa-edit" onClick="onEdit(this)" ></i><i onclick="mydelete(this)" id='${i}' class="fa-solid fa-trash"  ></i>  </td>
 </tr>
-
-
-
 `
 
   }
 
-
 }
-
-
-
-
-
+let n = 1;
+let x = 0;
 
 function AddRow() {
   let AddRown = document.getElementById("table");
   let NewRow = AddRown.insertRow(n);
-  NewRow.className = x;
+  // NewRow.className = x;
   names[x] = document.getElementById("name").value;
   brands[x] = document.getElementById("brand").value;
   prices[x] = document.getElementById("price").value;
@@ -73,7 +63,6 @@ function AddRow() {
       discounts[x] = document.getElementsByName('discount')[i].value;
     }
   }
-
 
   xd();
   // let cel1 = NewRow.insertCell(0);
@@ -91,9 +80,6 @@ function AddRow() {
   // cel5.innerHTML = types[x];
   // cel6.innerHTML = discounts[x];
   // cel7.innerHTML = `<i id='${x}' class="fas fa-edit" onClick="onEdit(this)" ></i><i onclick="mydelete(this)" id='${x}' class="fa-solid fa-trash" name="hh" ></i>`;
-
-
-
 
 
   n++;

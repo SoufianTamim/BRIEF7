@@ -112,3 +112,21 @@ input[type=button]:active {
   background-color: #355c7d;
   transform: translateY(4px);
 }
+
+.input-control.success input {
+  border: 2px solid #355c7d;
+  box-shadow: 10px 5px 5px #355c7d;
+}
+.input-control.error input {
+  border: 2px solid #c06c84;
+  box-shadow: 10px 5px 5px #c06c84;
+}
+.input-control .error {
+  padding: 5px;
+  color: #c06c84;
+  font-size: 12px;
+  height: 20px;
+}
+input:focus {
+  outline: 0;
+}
