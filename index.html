@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>products form</title>
     <link rel="stylesheet" href="/style.css" />
-    <script src="https://kit.fontawesome.com/c7a60e43cd.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/c7a60e43cd.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body>
@@ -57,19 +60,31 @@
         <label> On discount : </label>
         <div id="lastdiv">
           <label>yes</label><input type="radio" name="discount" value="yes" />
-          <label>No</label><input type="radio" name="discount" value="no"/>
+          <label>No</label><input type="radio" name="discount" value="no" />
         </div>
         <div class="error"></div>
       </div>
       <!-- ================= submit button ================== -->
 
-      <input type="button" name="button" id="btn" value="Add" onclick="AddRow()">
-      <input type="button" name="button" id="btn" value="save modification" onclick="editRow()">
-
+      <input
+        type="button"
+        name="button"
+        id="btn"
+        value="Add"
+        onclick="AddRow()"
+      />
+      <input
+        type="button"
+        name="button"
+        id="btn"
+        value="save modification"
+        onclick="editRow()"
+      />
     </form>
 
     <section>
       <table id="table">
+        <tbody>
         <tr>
           <th>name</th>
           <th>brand</th>
@@ -79,6 +94,10 @@
           <th>on discount</th>
           <th>actions</th>
         </tr>
+      </tbody>
+        <thead>
+
+        </thead>
       </table>
     </section>
 
