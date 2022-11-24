@@ -41,14 +41,14 @@
       <div>
         <label>what type is your product :</label>
         <select id="type">
-          <!-- <option disabled selected value>-- select an option --</option> -->
-          <option value="1">hygiène et toilette</option>
-          <option value="2">soins esthétiques</option>
-          <option value="3">produits solaires</option>
-          <option value="4">beauté des mains et de pieds</option>
-          <option value="5">produits de maquillage</option>
-          <option value="6">entretien capillaires</option>
-          <option value="7">parfums</option>
+          <option disabled selected value>-- select an option --</option>
+          <option value="hygiène et toilette">hygiène et toilette</option>
+          <option value="soins esthétiques">soins esthétiques</option>
+          <option value="produits solaires">produits solaires</option>
+          <option value="beauté des mains et de pieds">beauté des mains et de pieds</option>
+          <option value="produits de maquillage">produits de maquillage</option>
+          <option value="entretien capillaires">entretien capillaires</option>
+          <option value="parfums">parfums</option>
         </select>
         <div class="error"></div>
       </div>
@@ -56,38 +56,16 @@
       <div>
         <label> On discount : </label>
         <div id="lastdiv">
-          <label>yes</label><input type="radio" name="discount" value="yes"/><label
-            >No</label
-          ><input type="radio" name="discount" value="no"/>
+          <label>yes</label><input type="radio" name="discount" value="yes" />
+          <label>No</label><input type="radio" name="discount" value="no"/>
         </div>
         <div class="error"></div>
       </div>
       <!-- ================= submit button ================== -->
-          <p> Select one from the given options:
-        <select id="select1">
-            <option value="free">Free</option>
-            <option value="basic">Basic</option>
-            <option value="premium">Premium</option>
-        </select>
-    </p>
-  
-  
-    <p> The value of the option selected is: 
-        <span class="output"></span>
-    </p>
-  
-  
-    <button onclick="getOption()"> Check option </button>
-      
-    <script type="text/javascript">
-    function getOption() {
-        selectElement = document.querySelector('#select1');
-        output = selectElement.value;
-        document.querySelector('.output').textContent = output;
-    }
-    </script>
 
       <input type="button" name="button" id="btn" value="Add" onclick="AddRow()">
+      <input type="button" name="button" id="btn" value="save modification" onclick="editRow()">
+
     </form>
 
     <section>
@@ -101,27 +79,10 @@
           <th>on discount</th>
           <th>actions</th>
         </tr>
-        <!-- <tr>
-          <td>name</td>
-          <td>brand</td>
-          <td>production date</td>
-          <td>price</td>
-          <td>type</td>
-          <td>on discount</td>
-          <td><i class="fas fa-edit"></i><i class="fa-solid fa-trash"></i></td>
-        </tr>
-        <tr>
-          <td>name</td>
-          <td>brand</td>
-          <td>production date</td>
-          <td>price</td>
-          <td>type</td>
-          <td>on discount</td>
-          <td><i class="fas fa-edit"></i> <i class="fa-solid fa-trash"></i></td>
-        </tr> -->
       </table>
     </section>
 
     <script src="/script.js"></script>
+    <script src="/scs.js"></script>
   </body>
 </html>
