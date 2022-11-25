@@ -13,33 +13,28 @@
   </head>
 
   <body>
-    <form id="myform">
+    <form id="form">
       <h1>Enter product infos</h1>
       <!-- =================  ================== -->
       <div class="input-control">
         <label> Name :</label><input type="text" id="name" />
-
         <div class="error"></div>
       </div>
       <!-- ================= brand ================== -->
       <div class="input-control">
-        <label>brand : </label>
-        <input type="text" id="brand" />
-
+        <label>brand : </label><input type="text" id="brand" />
         <div class="error"></div>
       </div>
 
       <!-- =================  ================== -->
       <div class="input-control">
-        <label>price : </label><input type="text" id="price" />
+        <label>price : </label><input id="price" type="number"/>
         <div class="error"></div>
       </div>
       <!-- ================== date ================= -->
       <div class="input-control">
         <label>production date: </label>
-        <div>
           <input type="date" id="date" />
-        </div>
         <div class="error"></div>
       </div>
       <!-- ================= Clubs input ================== -->
@@ -86,6 +81,8 @@
         value="save Modifs"
         onclick="saveMo(this)"
       />
+      <input type="button" class="submit" type="submit" value="submit">
+
     </form>
 
     <section>
@@ -105,7 +102,7 @@
       </table>
     </section>
 
-    <!-- <script src="/verification.js"></script> -->
+    <script src="/pree.js"></script>
     <script src="/script.js"></script>
   </body>
 </html>

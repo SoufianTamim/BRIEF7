@@ -5,7 +5,20 @@ let brand = document.getElementById("brand");
 let price = document.getElementById("price");
 let date = document.getElementById("date");
 let type = document.getElementById("type");
-let discount = document.getElementsByName('discount');
+let discount = document.getElementsBynamee('discount');
+
+let nameValue = document.getElementById("name").value;
+let brandValue = document.getElementById("brand").value;
+let priceValue = document.getElementById("price").value;
+let dateValue = document.getElementById("date").value;
+let typeValue = document.getElementById("type").value;
+let discountValue= document.getElementsBynamee("discount");
+
+let myRegex = /^[a-zA-Z-\s]+$/;
+let priceRe = / /g;
+
+
+
 
 // ============================ event listner adding ====================================== //
 form.addEventListener("submit", (e) => {
@@ -30,15 +43,28 @@ const setSuccess = (element) => {
   inputControl.classList.remove("error");
 };
 // ============================ onblur Functions ================================================== //
+
+
+
+
+
+
+
+
+
+
+
+
+
 namee.onblur = () => {
-  if (namee === "") {
-    setError(namee, "name is required");
-  } else if (namee.length > 30) {
+  if (nameValue === "") {
+    setError(namee, "namee is required");
+  } else if (nameValue.length > 30) {
     setError(
       namee,
       "name is too long, it should be less than 30 characters "
     );
-  } else if (myRegex.test(namee) === false) {
+  } else if (myRegex.test(nameValue) === false) {
     setError(namee, "name cannot contain numbers");
   } else {
     setSuccess(namee);
@@ -56,7 +82,7 @@ brand.onblur = () => {
   }
 };
 price.onblur = () => {
-  let priceRe = /([+])?(212)?0[5-7]\d{8}$/g;
+  let priceRe = / /g;
   if (price === "") {
     setError(price, "price is required , cannot be empty ");
   } else if (price.length > 14) {
@@ -69,7 +95,7 @@ price.onblur = () => {
 };
 
 date.onblur = () => {
-  if (date === "") {
+  if (dateValue === "") {
     setError(date, "date is required , cannot be empty ");
   } else {
     setSuccess(date);
@@ -77,18 +103,17 @@ date.onblur = () => {
 };
 
 //======================= REGEX FORMS =============================//
-let myRegex = /^[a-zA-Z-\s]+$/;
-let priceRe = / /g;
+
 
 // ================================== onclick function =============================================== //
 const validateInputs = () => {
-  // ==========================  input values  ============================== //
-  let nameValue = document.getElementById("name").value;
-  let brandValue = document.getElementById("brand").value;
-  let priceValue = document.getElementById("price").value;
-  let dateValue = document.getElementById("date").value;
-  let typeValue = document.getElementById("type").value;
-  let diss= document.getElementsByName("discount");
+  // // ==========================  input values  ============================== //
+  // let nameValue = document.getElementById("name").value;
+  // let brandValue = document.getElementById("brand").value;
+  // let priceValue = document.getElementById("price").value;
+  // let dateValue = document.getElementById("date").value;
+  // let typeValue = document.getElementById("type").value;
+  // let diss= document.getElementsByName("discount");
   //======================= first name validaton ====================//
   if (nameValue === "") {
     setError(namee, " Name is required");
@@ -98,9 +123,9 @@ const validateInputs = () => {
       "name is too long, it should be less than 30 characters "
     );
   } else if (myRegex.test(nameValue) === false) {
-    setError(namee, "first  name cannot contain numbers");
+    setError(name, "first  name cannot contain numbers");
   } else {
-    setSuccess(namee);
+    setSuccess(name);
   }
     
   //======================= first name validaton =========================//
