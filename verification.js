@@ -1,5 +1,5 @@
 // ============================ create variables =================================================== //
-let forme = document.getElementById("myform");
+let form = document.getElementById("myform");
 let namee = document.getElementById("name");
 let brand = document.getElementById("brand");
 let price = document.getElementById("price");
@@ -8,7 +8,7 @@ let type = document.getElementById("type");
 let discount = document.getElementsByName('discount');
 
 // ============================ event listner adding ====================================== //
-forme.addEventListener("submit", (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
   validateInputs();
 });

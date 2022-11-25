@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>products form</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="#">
+    <link rel="shortcut icon" href="#" />
     <script
       src="https://kit.fontawesome.com/c7a60e43cd.js"
       crossorigin="anonymous"
@@ -18,7 +18,7 @@
       <!-- =================  ================== -->
       <div class="input-control">
         <label> Name :</label><input type="text" id="name" />
-        
+
         <div class="error"></div>
       </div>
       <!-- ================= brand ================== -->
@@ -50,7 +50,9 @@
           <option value="hygiène et toilette">hygiène et toilette</option>
           <option value="soins esthétiques">soins esthétiques</option>
           <option value="produits solaires">produits solaires</option>
-          <option value="beauté des mains et de pieds">beauté des mains et de pieds</option>
+          <option value="beauté des mains et de pieds">
+            beauté des mains et de pieds
+          </option>
           <option value="produits de maquillage">produits de maquillage</option>
           <option value="entretien capillaires">entretien capillaires</option>
           <option value="parfums">parfums</option>
@@ -67,31 +69,43 @@
         <div class="error"></div>
       </div>
       <!-- ================= submit button ================== -->
-      <!-- <input class="submit" type="button" name="button" id="btn" value="Add" onclick="AddRow()" /> -->
-      <button type="submit" class="submit">siis</button>
+      <input
+        class="submit"
+        type="button"
+        name="button"
+        id="btne"
+        value="Add"
+        onclick="AddRow()"
+      />
+      <input
+        class="submit"
+        type="button"
+        name="button"
+        id="btn"
+        title=""
+        value="save Modifs"
+        onclick="saveMo(this)"
+      />
     </form>
 
     <section>
       <table id="table">
         <thead>
-        <tr>
-          <th>name</th>
-          <th>brand</th>
-          <th>production date</th>
-          <th>price</th>
-          <th>type</th>
-          <th>on discount</th>
-          <th>actions</th>
-        </tr>
+          <tr>
+            <th>name</th>
+            <th>brand</th>
+            <th>production date</th>
+            <th>price</th>
+            <th>type</th>
+            <th>on discount</th>
+            <th>actions</th>
+          </tr>
         </thead>
-        <tbody>
-        
-      </tbody>
+        <tbody></tbody>
       </table>
     </section>
 
-    <script src="verification.js"></script>
-    <!-- <script src="script.js"></script> -->
-    <!-- <script src="scs.js"></script> -->
+    <!-- <script src="/verification.js"></script> -->
+    <script src="/script.js"></script>
   </body>
 </html>

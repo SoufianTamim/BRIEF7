@@ -130,3 +130,6 @@ input[type=button]:active {
 input:focus {
   outline: 0;
 }
+i:hover{
+  color: #f0f0f0;
+}
