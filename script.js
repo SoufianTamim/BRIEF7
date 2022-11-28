@@ -1,14 +1,9 @@
-
-
-
 let names = [];
 let brands = [];
 let prices = [];
 let dates = [];
 let types = [];
 let discounts = [];
-
-
 // ====================================== create table  ===========================================//
 function xd() {
   document.querySelector("tbody").innerHTML = "";
@@ -25,28 +20,14 @@ function xd() {
   </i><i  onclick="document.getElementById('md').style.display='block'"
   id='${i}' class="fa-solid fa-trash"  ></i>  </td>
 </tr>
-
 `;
-
   }
 }
 // ====================================== empty inputs  ===========================================//
-
 function emptyF() {
   document.getElementById("form").reset();
-
-  // document.getElementById("name").value = "";
-  // document.getElementById("brand").value = "";
-  // document.getElementById("price").value = "";
-  // document.getElementById("date").value = "";
-  // document.getElementById("type").value = "";
-  // document.querySelector('form').discount[0].checked = false;
-  // document.querySelector('form').discount[1].checked = false;
-
-
 }
 // ====================================== delete array content ===========================================//
-
 function deleteData(array, i) {
   array.splice(i, 1);
 }
@@ -64,12 +45,7 @@ function AddRow() {
   submit.style.display = "block";
   arr.length = 0
 }
-// ====================================== save modifications button hide  =============================//
-
-
-
 // ====================================== delete data frm array ===========================================//
-
 function myDelete(element) {
   i = Number(element.id);
   deleteData(names, i);
@@ -80,12 +56,9 @@ function myDelete(element) {
   deleteData(discounts, i);
   xd()
   emptyF()
-
   document.getElementById('md').style.display = 'none';
 }
-
 // =============================== upload data in table to inputs  =====================//
-
 function Upload(ele) {
   i = Number(ele.id);
   document.getElementById('save').title = i
@@ -94,13 +67,10 @@ function Upload(ele) {
   document.getElementById("price").value = prices[i];
   document.getElementById("date").value = dates[i];
   document.getElementById("type").value = types[i];
-  document.querySelector('form').discount.value = discounts[i];
- 
+  document.querySelector('form').discount.value = discounts[i]
   submit.setAttribute('onclick', "validateInputs('save')")
-
 }
 // ========================== save modifications from inputs to data table   =======================//
-
 function saveMo(elem) {
   i = Number(elem.title);
   console.log(i);
@@ -113,13 +83,9 @@ function saveMo(elem) {
   document.getElementById('submit').style.display = "block";
   document.getElementById('save').style.display = "none";
   submit.setAttribute('onclick', "validateInputs('add')")
-
-
-
   xd()
   emptyF()
 }
-
 // ============================ create variables =================================================== //
 const form = document.getElementById("form");
 const namee = document.getElementById("name");
@@ -128,12 +94,8 @@ const price = document.getElementById("price");
 const type = document.getElementById("type");
 const date = document.getElementById("date");
 const discount = document.getElementsByName('discount');
-
-
 let myRegex = /^[a-zA-Z-\s]+$/;
-
 const arr = []
-
 // ============================ event listner adding ====================================== //
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -156,10 +118,7 @@ const setSuccess = (element) => {
   inputControl.classList.add("success");
   inputControl.classList.remove("error");
 };
-
 //=======================  onblur functions =============================//
-
-
 namee.onblur = () => {
   const nameValue = namee.value;
   if (nameValue === "") {
@@ -178,7 +137,6 @@ namee.onblur = () => {
     setSuccess(namee);
   }
 }
-
 brand.onblur = () => {
   const brandValue = brand.value;
   if (brandValue === "") {
@@ -194,8 +152,6 @@ brand.onblur = () => {
     setSuccess(brand);
   }
 }
-
-
 price.onblur = () => {
   const priceValue = price.value;
   if (priceValue === "") {
@@ -208,7 +164,6 @@ price.onblur = () => {
     setSuccess(price);
   }
 }
-
 date.onblur = () => {
   const dateValue = date.value;
   if (dateValue === "") {
@@ -218,10 +173,7 @@ date.onblur = () => {
     setSuccess(date);
   }
 };
-
-
 // ================================== onclick function =============================================== //
-
 const validateInputs = (x) => {
   // ======================= variables Values  ======================//
   const nameValue = namee.value;
@@ -229,9 +181,7 @@ const validateInputs = (x) => {
   const priceValue = price.value;
   const typeValue = type.value;
   const dateValue = date.value;
-
   //======================= name validaton ====================//
-
   if (nameValue === "") {
     setError(namee, "name is required");
     arr.push(false);
@@ -293,23 +243,16 @@ const validateInputs = (x) => {
   } else {
     document.querySelector(".error_discount").innerHTML = '';
   }
-
-
   if (arr.length != 0) {
-    document.getElementById("submit").style.display = "block";
+    submit.style.display = "block";
   } else if ((arr.length == 0)) {
-
-
     if (x === 'add') {
-      document.getElementById("submit").style.display = "none";
-      document.getElementById("add").style.display = "block";
+      submit.style.display = "none";
+      add.style.display = "block";
     } else {
       submit.style.display = "none";
       save.style.display = "block";
     }
-
-
   }
-
   arr.length = 0
 };
