@@ -27,19 +27,23 @@ function xd() {
 </tr>
 
 `;
+
   }
 }
 // ====================================== empty inputs  ===========================================//
 
 function emptyF() {
-  document.getElementById("name").value = "";
-  document.getElementById("brand").value = "";
-  document.getElementById("price").value = "";
-  document.getElementById("date").value = "";
-  document.getElementById("type").value = "" ;
-  document.querySelector('form').discount[0].checked = false ;
-  document.querySelector('form').discount[1].checked = false;
-  arr.push(false)
+  document.getElementById("form").reset();
+
+  // document.getElementById("name").value = "";
+  // document.getElementById("brand").value = "";
+  // document.getElementById("price").value = "";
+  // document.getElementById("date").value = "";
+  // document.getElementById("type").value = "";
+  // document.querySelector('form').discount[0].checked = false;
+  // document.querySelector('form').discount[1].checked = false;
+
+
 }
 // ====================================== delete array content ===========================================//
 
@@ -56,12 +60,13 @@ function AddRow() {
   discounts.push(document.querySelector('form').discount.value);
   xd();
   emptyF()
-
-
+  add.style.display = "none";
+  submit.style.display = "block";
+  arr.length = 0
 }
 // ====================================== save modifications button hide  =============================//
 
-document.getElementById('btn').style.display = "none";
+
 
 // ====================================== delete data frm array ===========================================//
 
@@ -75,23 +80,23 @@ function myDelete(element) {
   deleteData(discounts, i);
   xd()
   emptyF()
-  
-  document.getElementById('md').style.display='none';
+
+  document.getElementById('md').style.display = 'none';
 }
 
 // =============================== upload data in table to inputs  =====================//
 
 function Upload(ele) {
   i = Number(ele.id);
-  document.getElementById('btn').title = i
+  document.getElementById('save').title = i
   document.getElementById("name").value = names[i];
   document.getElementById("brand").value = brands[i];
   document.getElementById("price").value = prices[i];
-  document.getElementById("date").value = dates[i] ;
+  document.getElementById("date").value = dates[i];
   document.getElementById("type").value = types[i];
   document.querySelector('form').discount.value = discounts[i];
-  document.getElementById('btn').style.display = "block";
-  document.getElementById('btne').style.display = "none";
+ 
+  submit.setAttribute('onclick', "validateInputs('save')")
 
 }
 // ========================== save modifications from inputs to data table   =======================//
@@ -99,34 +104,21 @@ function Upload(ele) {
 function saveMo(elem) {
   i = Number(elem.title);
   console.log(i);
-  names[i] = document.getElementById("name").value; 
+  names[i] = document.getElementById("name").value;
   brands[i] = document.getElementById("brand").value
-  prices[i] = document.getElementById("price").value ;
-  dates[i] = document.getElementById("date").value ;
-  types[i] = document.getElementById("type").value ;
+  prices[i] = document.getElementById("price").value;
+  dates[i] = document.getElementById("date").value;
+  types[i] = document.getElementById("type").value;
   discounts[i] = document.querySelector('form').discount.value;
-  document.getElementById('btne').style.display = "block";
-  document.getElementById('btn').style.display = "none";
+  document.getElementById('submit').style.display = "block";
+  document.getElementById('save').style.display = "none";
+  submit.setAttribute('onclick', "validateInputs('add')")
+
 
 
   xd()
   emptyF()
 }
-
-// ===================== modal ===========================//
-// var modal = document.getElementById("md");
-    
-//     window.onclick = function (event) {
-//       if (event.target == modal) {
-//         modal.style.display = "none";
-//       }
-//     };
-
-
-
-
-
-
 
 // ============================ create variables =================================================== //
 const form = document.getElementById("form");
@@ -137,17 +129,10 @@ const type = document.getElementById("type");
 const date = document.getElementById("date");
 const discount = document.getElementsByName('discount');
 
-document.getElementById("btne").style.display = "none";
-
-
 
 let myRegex = /^[a-zA-Z-\s]+$/;
-let priceRe = / /g;
-
 
 const arr = []
-
-
 
 // ============================ event listner adding ====================================== //
 form.addEventListener("submit", (e) => {
@@ -179,16 +164,16 @@ namee.onblur = () => {
   const nameValue = namee.value;
   if (nameValue === "") {
     setError(namee, "name is required");
-    arr.push(false);
+
   } else if (nameValue.length > 30) {
     setError(
       namee,
-      "first name is too long, it should be less than 30 characters "
+      "name is too long, it should be less than 30 characters "
     );
-    arr.push(false);
+
   } else if (myRegex.test(nameValue) === false) {
-    setError(namee, "first  name cannot contain numbers");
-    arr.push(false);
+    setError(namee, "name cannot contain numbers");
+
   } else {
     setSuccess(namee);
   }
@@ -196,33 +181,29 @@ namee.onblur = () => {
 
 brand.onblur = () => {
   const brandValue = brand.value;
-    if (brandValue === "") {
-      setError(brand, "last name is required , cannot be empty ");
-      arr.push(false);
-    } else if (brandValue.length > 30) {
-      setError(
-        brand,
-        "last name is too long, it should be less than 30 characters "
-      );
-      arr.push(false);
-      // } else if (myRegex.test(brandValue) === false) {
-      //   setError(brand, "last  name cannot contain numbers");
-      //   arr.push(false)
-    } else {
-      setSuccess(brand);
-    }
+  if (brandValue === "") {
+    setError(brand, "brand is required ");
+
+  } else if (brandValue.length > 30) {
+    setError(brand, "brand is too long, it should be less than 30 characters ");
+
+  } else if (myRegex.test(brandValue) === false) {
+    setError(brand, "brand cannot contain numbers");
+
+  } else {
+    setSuccess(brand);
+  }
 }
+
+
 price.onblur = () => {
   const priceValue = price.value;
   if (priceValue === "") {
-    setError(price, "phone number is required , cannot be empty ");
-    arr.push(false);
-  } else if (priceValue.length > 14) {
-    setError(price, "phone number is too long");
-    arr.push(false);
-    // } else if (phoneRe.test(priceValue) === false) {
-    //   setError(price, "phone number is invalid");
-    //   arr.push(false)
+    setError(price, "price required");
+
+  } else if (priceValue.length > 30) {
+    setError(price, "price is too long");
+
   } else {
     setSuccess(price);
   }
@@ -230,22 +211,18 @@ price.onblur = () => {
 
 date.onblur = () => {
   const dateValue = date.value;
-    if (dateValue === "") {
-      setError(date, "email is required , cannot be empty ");
-      arr.push(false);
-    } else if (dateValue.length > 50) {
-      setError(date, "email is too long");
-      arr.push(false);
-    } else {
-      setSuccess(date);
-    }
-  
+  if (dateValue === "") {
+    setError(date, "date is required");
+
+  } else {
+    setSuccess(date);
+  }
 };
 
 
 // ================================== onclick function =============================================== //
 
-const validateInputs = () => {
+const validateInputs = (x) => {
   // ======================= variables Values  ======================//
   const nameValue = namee.value;
   const brandValue = brand.value;
@@ -272,40 +249,31 @@ const validateInputs = () => {
   }
   //======================= first name validaton =========================//
   if (brandValue === "") {
-    setError(brand, "last name is required , cannot be empty ");
+    setError(brand, "brand is required ");
     arr.push(false);
   } else if (brandValue.length > 30) {
-    setError(
-      brand,
-      "last name is too long, it should be less than 30 characters "
-    );
+    setError(brand, "brand is too long, it should be less than 30 characters ");
     arr.push(false);
-    // } else if (myRegex.test(brandValue) === false) {
-    //   setError(brand, "last  name cannot contain numbers");
-    //   arr.push(false)
+  } else if (myRegex.test(brandValue) === false) {
+    setError(brand, "brand cannot contain numbers");
+    arr.push(false)
   } else {
     setSuccess(brand);
   }
   //======================= phone Validation =============================//
 
   if (priceValue === "") {
-    setError(price, "phone number is required , cannot be empty ");
+    setError(price, "price is required , can't be empty ");
     arr.push(false);
-  } else if (priceValue.length > 14) {
-    setError(price, "phone number is too long");
+  } else if (priceValue.length > 30) {
+    setError(price, "price is too long");
     arr.push(false);
-    // } else if (phoneRe.test(priceValue) === false) {
-    //   setError(price, "phone number is invalid");
-    //   arr.push(false)
   } else {
     setSuccess(price);
   }
   //======================= email Validation =============================//
   if (typeValue === "") {
-    setError(type, "email is required , cannot be empty ");
-    arr.push(false);
-  } else if (typeValue.length > 50) {
-    setError(type, "email is too long");
+    setError(type, "type is required");
     arr.push(false);
   } else {
     setSuccess(type);
@@ -313,9 +281,6 @@ const validateInputs = () => {
   //======================= email Validation =============================//
   if (dateValue === "") {
     setError(date, "email is required , cannot be empty ");
-    arr.push(false);
-  } else if (dateValue.length > 50) {
-    setError(date, "email is too long");
     arr.push(false);
   } else {
     setSuccess(date);
@@ -326,14 +291,25 @@ const validateInputs = () => {
       "Please choose if product on discount or no ";
     arr.push(false);
   } else {
-    document.querySelector(".error_discount").innerHTML = "";
+    document.querySelector(".error_discount").innerHTML = '';
   }
+
+
   if (arr.length != 0) {
     document.getElementById("submit").style.display = "block";
-  } else {
-    document.getElementById("submit").style.display = "none";
-    document.getElementById("btne").style.display = "block";
-  }
-  arr.push(false)
-};
+  } else if ((arr.length == 0)) {
 
+
+    if (x === 'add') {
+      document.getElementById("submit").style.display = "none";
+      document.getElementById("add").style.display = "block";
+    } else {
+      submit.style.display = "none";
+      save.style.display = "block";
+    }
+
+
+  }
+
+  arr.length = 0
+};
