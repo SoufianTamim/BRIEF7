@@ -1,25 +1,18 @@
-let names = [];
-let brands = [];
-let prices = [];
-let dates = [];
-let types = [];
-let discounts = [];
 // ====================================== create table  ===========================================//
+const products = [];
+
 function xd() {
   document.querySelector("tbody").innerHTML = "";
-  for (i = 0; i < names.length; i++) {
+  for (i in products) {
     document.querySelector("tbody").innerHTML += `
 <tr>
-  <td>${names[i]}</td>
-  <td>${brands[i]}</td>
-  <td>${dates[i]}</td>
-  <td>${prices[i]}</td>
-  <td>${types[i]}</td>
-  <td>${discounts[i]}</td>  <td> 
-   <i id='${i}' class="fas fa-edit" onClick="Upload(this)" >
-  </i><i  onclick="document.getElementById('md').style.display='block'"
-  id='${i}' class="fa-solid fa-trash"  ></i>  </td>
-</tr>
+  <td>${products[i].name}</td>
+  <td>${products[i].brand}</td>
+  <td>${products[i].price}</td>
+  <td>${products[i].date}</td>
+  <td>${products[i].type}</td>
+  <td>${products[i].discount}</td>  
+  <td><i id='${i}' class="fas fa-edit" onClick="Upload(this)" ></i><i  onclick="preparefordeletion(${i})" id='' class="fa-solid fa-trash"  ></i>  </td> 
 `;
   }
 }
@@ -27,18 +20,17 @@ function xd() {
 function emptyF() {
   document.getElementById("form").reset();
 }
-// ====================================== delete array content ===========================================//
-function deleteData(array, i) {
-  array.splice(i, 1);
-}
+
 // ====================================== create rows  ===========================================//
 function AddRow() {
-  names.push(document.getElementById("name").value);
-  brands.push(document.getElementById("brand").value);
-  dates.push(document.getElementById("date").value);
-  prices.push(document.getElementById("price").value);
-  types.push(document.getElementById("type").value);
-  discounts.push(document.querySelector('form').discount.value);
+  products.push({
+    name: document.getElementById("name").value,
+    brand: document.getElementById("brand").value,
+    price: document.getElementById("price").value,
+    date: document.getElementById("date").value,
+    type: document.getElementById("type").value,
+    discount: document.querySelector('form').discount.value
+  })
   xd();
   emptyF();
   add.style.display = "none";
@@ -46,14 +38,13 @@ function AddRow() {
   arr.length = 0
 }
 // ====================================== delete data frm array ===========================================//
-function myDelete(element) {
-  i = Number(element.id);
-  deleteData(names, i);
-  deleteData(brands, i);
-  deleteData(prices, i);
-  deleteData(dates, i);
-  deleteData(types, i);
-  deleteData(discounts, i);
+function preparefordeletion(x) {
+  document.getElementById('md').style.display = 'block';
+  document.querySelector(".deletebtn").id = x
+}
+function myDelete(ele) {
+  i = Number(ele.id);
+  products.splice(i, 1)
   xd()
   emptyF()
   document.getElementById('md').style.display = 'none';
@@ -61,32 +52,34 @@ function myDelete(element) {
 // =============================== upload data in table to inputs  =====================//
 function Upload(ele) {
   i = Number(ele.id);
-  document.getElementById('save').title = i
-  document.getElementById("name").value = names[i];
-  document.getElementById("brand").value = brands[i];
-  document.getElementById("price").value = prices[i];
-  document.getElementById("date").value = dates[i];
-  document.getElementById("type").value = types[i];
-  document.querySelector('form').discount.value = discounts[i]
+  saveMo.title = ele.id;
+  document.getElementById("name").value = products[Number(ele.id)].name;
+  document.getElementById("brand").value = products[Number(ele.id)].brand;
+  document.getElementById("price").value = products[Number(ele.id)].price;
+  document.getElementById("date").value = products[Number(ele.id)].date;
+  document.getElementById("type").value = products[Number(ele.id)].type;
+  document.querySelector('form').discount.value = products[Number(ele.id)].discount;
   submit.setAttribute('onclick', "validateInputs('save')")
 }
-// ========================== save modifications from inputs to data table   =======================//
-function saveMo(elem) {
-  i = Number(elem.title);
 
-  names[i] = document.getElementById("name").value;
-  brands[i] = document.getElementById("brand").value
-  prices[i] = document.getElementById("price").value;
-  dates[i] = document.getElementById("date").value;
-  types[i] = document.getElementById("type").value;
-  discounts[i] = document.querySelector('form').discount.value;
+
+// ========================== save modifications from inputs to data table   =======================//
+function saveMo(ele) {
+  i = Number(ele.title);
+  let ind = saveMo.title;
+
+  products[Number(ind)].name = document.getElementById("name").value;
+  products[Number(ind)].brand = document.getElementById("brand").value;
+  products[Number(ind)].price = document.getElementById("price").value;
+  products[Number(ind)].date = document.getElementById("date").value;
+  products[Number(ind)].type = document.getElementById("type").value;
+  products[Number(ind)].discount = document.querySelector('form').discount.value;
   document.getElementById('submit').style.display = "block";
   document.getElementById('save').style.display = "none";
   submit.setAttribute('onclick', "validateInputs('add')")
   xd()
   emptyF()
 }
-
 
 // ============================ create variables =================================================== //
 const form = document.getElementById("form");
@@ -96,8 +89,12 @@ const price = document.getElementById("price");
 const type = document.getElementById("type");
 const date = document.getElementById("date");
 const discount = document.getElementsByName('discount');
+<<<<<<< HEAD
+let myRegex = /^[a-zA-Z.]+(\s[a-zA-Z.+'-]+)*\s?$/;
+=======
 let myRegex = /^[a-zA-Z.]+(\s[a-zA-Z.+'-]+)*\s?$/g;
 
+>>>>>>> de75cea1779663db5362c6987a511a77a9ed0b81
 const arr = []
 // ============================ event listner adding ====================================== //
 form.addEventListener("submit", (e) => {
@@ -132,10 +129,8 @@ namee.onblur = () => {
       namee,
       "name is too long, it should be less than 30 characters "
     );
-
   } else if (myRegex.test(nameValue) === false) {
     setError(namee, "name cannot contain numbers");
-
   } else {
     setSuccess(namee);
   }
