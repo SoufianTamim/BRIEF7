@@ -89,12 +89,9 @@ const price = document.getElementById("price");
 const type = document.getElementById("type");
 const date = document.getElementById("date");
 const discount = document.getElementsByName('discount');
-<<<<<<< HEAD
-let myRegex = /^[a-zA-Z.]+(\s[a-zA-Z.+'-]+)*\s?$/;
-=======
-let myRegex = /^[a-zA-Z.]+(\s[a-zA-Z.+'-]+)*\s?$/g;
 
->>>>>>> de75cea1779663db5362c6987a511a77a9ed0b81
+let myRegex = /^[a-zA-Z.]+(\s[a-zA-Z.+'-]+)*\s?$/;
+
 const arr = []
 // ============================ event listner adding ====================================== //
 form.addEventListener("submit", (e) => {
