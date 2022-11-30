@@ -40,7 +40,7 @@ function AddRow() {
   types.push(document.getElementById("type").value);
   discounts.push(document.querySelector('form').discount.value);
   xd();
-  emptyF()
+  emptyF();
   add.style.display = "none";
   submit.style.display = "block";
   arr.length = 0
@@ -73,7 +73,7 @@ function Upload(ele) {
 // ========================== save modifications from inputs to data table   =======================//
 function saveMo(elem) {
   i = Number(elem.title);
-  console.log(i);
+
   names[i] = document.getElementById("name").value;
   brands[i] = document.getElementById("brand").value
   prices[i] = document.getElementById("price").value;
@@ -86,6 +86,8 @@ function saveMo(elem) {
   xd()
   emptyF()
 }
+
+
 // ============================ create variables =================================================== //
 const form = document.getElementById("form");
 const namee = document.getElementById("name");
@@ -95,6 +97,7 @@ const type = document.getElementById("type");
 const date = document.getElementById("date");
 const discount = document.getElementsByName('discount');
 let myRegex = /^[a-zA-Z-\s]+$/;
+
 const arr = []
 // ============================ event listner adding ====================================== //
 form.addEventListener("submit", (e) => {
